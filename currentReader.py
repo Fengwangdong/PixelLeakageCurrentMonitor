@@ -11,6 +11,7 @@ def getLeakageCurrent(alias, currentValue):
 
         if k.find(alias)!=-1:
             rocCurrent = currentValue/float(numberOfRocs[k])
+            #rocCurrent = currentValue/float(numberOfRocs[k])*16.0 # each module has 16 rocs
             break
 
     return rocCurrent

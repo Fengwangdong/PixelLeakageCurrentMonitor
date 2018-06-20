@@ -24,7 +24,8 @@ if(os.path.exists(inputFileName) and os.path.exists(moduleFileName)):
             module = iModule.split()
 
             if alias in module[0]:
-                fout.write(module[0] + " " + str(line[2]) + "\n")
+                moduleCurrent = float(line[2])*16.0
+                fout.write(module[0] + " " + str(moduleCurrent) + "\n")
 
 
     fout.close()
