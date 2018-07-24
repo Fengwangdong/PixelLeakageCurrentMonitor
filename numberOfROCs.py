@@ -1,7 +1,7 @@
 numberOfRocs = {
     "PixelBarrel_BmI_S1_LAY1":48,
     "PixelBarrel_BmI_S2_LAY1":48,
-    "PixelBarrel_BmI_S3_LAY1":48,
+    "PixelBarrel_BmI_S3_LAY1":32,
     "PixelBarrel_BmI_S4_LAY1":48,
     "PixelBarrel_BmI_S5_LAY1":48,
     "PixelBarrel_BmI_S6_LAY1":48,
@@ -15,7 +15,7 @@ numberOfRocs = {
     "PixelBarrel_BmO_S6_LAY1":48,
     "PixelBarrel_BmO_S7_LAY1":48,
     "PixelBarrel_BmO_S8_LAY1":48,
-    "PixelBarrel_BpI_S1_LAY1":48,
+    "PixelBarrel_BpI_S1_LAY1":32,
     "PixelBarrel_BpI_S2_LAY1":48,
     "PixelBarrel_BpI_S3_LAY1":48,
     "PixelBarrel_BpI_S4_LAY1":48,
