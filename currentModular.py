@@ -1,6 +1,6 @@
 import os
 
-inputFileName = "leakageCurrents.txt"
+inputFileName = "rocCurrents.txt"
 moduleFileName = "powermap.txt"
 moduleOutputName = "moduleCurrents.txt"
 
