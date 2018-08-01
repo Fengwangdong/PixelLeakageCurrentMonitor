@@ -16,4 +16,13 @@ Use pyROOT to plot the leakage current dependence.
 
 python leakageCurrentPlotter.py
 
+Forth step:
+Produce the list of module currents for the input of cabling map:
+
+python currentModular.py 
+
+Then one can upload the produced list to the link below to show the colorful cabling map:
+
+http://vocms061.cern.ch/event_display/PixelCablingInterface/pixelcablingweb.php
+
 Enjoy!

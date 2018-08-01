@@ -1,7 +1,7 @@
 import os
 
 inputFileName = "rocCurrents.txt"
-moduleFileName = "powermap.txt"
+moduleFileName = "powermap.list"
 moduleOutputName = "moduleCurrents.txt"
 
 if(os.path.exists(inputFileName) and os.path.exists(moduleFileName)):
