@@ -45,9 +45,6 @@ def getPhiUnc(alias):
 cylinder = ["BpI","BpO","BmI","BmO"]
 sector   = ["S1","S2","S3","S4","S5","S6","S7","S8"]
 layer    = ["LAY1","LAY2","LAY3","LAY4"]
-#disk     = ["D1","D2","D3"]
-#rog      = ["ROG1","ROG2","ROG3","ROG4"]
-#ring     = ["RNG1","RNG2"]
 
 fileName = "currentsFromDB.txt"
 outputFile = "rocCurrents.txt"
