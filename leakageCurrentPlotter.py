@@ -29,13 +29,19 @@ if(os.path.exists(inputFileName)):
             if ilayer in line[0]:
                 if ("BpI" in line[0]) or ("BpO" in line[0]):
                     dataPlus[i][0].append(float(line[1]))
-                    dataPlus[i][1].append(float(line[3]))
+                    if line[3] == "null":
+                        dataPlus[i][1].append(0)
+                    else:
+                        dataPlus[i][1].append(float(line[3]))
                     dataPlus[i][2].append(float(0))
                     dataPlus[i][3].append(float(line[2]))
 
                 elif("BmI" in line[0]) or ("BmO" in line[0]):
                     dataMinus[i][0].append(float(line[1]))
-                    dataMinus[i][1].append(float(line[3]))
+                    if line[3] == "null":
+                        dataMinus[i][1].append(0)
+                    else:
+                        dataMinus[i][1].append(float(line[3]))
                     dataMinus[i][2].append(float(0))
                     dataMinus[i][3].append(float(line[2]))
 
