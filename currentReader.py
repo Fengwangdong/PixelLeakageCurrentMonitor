@@ -1,11 +1,35 @@
 import os
+from numberOfROCs import *
+
+def getRocCurrent(alias, currentValue):
+    rocCurrent = 0.0
+    sumRoc = 0
+    auxAlias1 = "null"
+    auxAlias2 = "null"
+
+    if "LAY14" in alias:
+        auxAlias1 = alias.replace("LAY14","LAY1")
+        auxAlias2 = alias.replace("LAY14","LAY4")
+
+    if "LAY23" in alias:
+        auxAlias1 = alias.replace("LAY23","LAY2")
+        auxAlias2 = alias.replace("LAY23","LAY3")
+
+    for k in numberOfRocs.keys():
+
+        if (auxAlias1.find(k)!=-1) or (auxAlias2.find(k)!=-1):
+            sumRoc += float(numberOfRocs[k])
+
+    rocCurrent = currentValue/sumRoc
+    return rocCurrent
+
 
 cylinder = ["BpI","BpO","BmI","BmO"]
 sector   = ["S1","S2","S3","S4","S5","S6","S7","S8"]
-layer    = ["LAY1","LAY2","LAY3","LAY4"]
+layer    = ["LAY14","LAY23"]
 
 fileName = "currentsFromDB.txt"
-outputFile = "currents.txt"
+outputFile = "currentsLV.txt"
 
 if(os.path.exists(fileName)):
     fin = open(fileName, "r+")
@@ -18,63 +42,39 @@ if(os.path.exists(fileName)):
             for index3 in layer:
 
                 alias = "PixelBarrel_" + index1 + "_" + index2 + "_" + index3
-                hvCurrent = -999.
                 anaCurrent = -999.
                 digCurrent = -999.
 
                 for l in lines:
                     line = l.split()
 
-                    aliasHV = "null"
-                    aliasLV1 = "null"
-                    aliasLV2 = "null"
-
-                    if "LAY14/channel002" in line[0]:
-                        aliasHV = line[0].replace("LAY14/channel002","LAY1")
-
-                    if "LAY14/channel003" in line[0]:
-                      aliasHV = line[0].replace("LAY14/channel003","LAY4")
-
-                    if "LAY23/channel002" in line[0]:
-                      aliasHV = line[0].replace("LAY23/channel002","LAY3")
-
-                    if "LAY23/channel003" in line[0]:
-                        aliasHV = line[0].replace("LAY23/channel003","LAY2")
-
+                    aliasLV = "null"
 
                     if "LAY14/channel000" in line[0]:
-                        aliasLV1 = line[0].replace("LAY14/channel000","LAY1Dig")
-                        aliasLV2 = line[0].replace("LAY14/channel000","LAY4Dig")
+                        aliasLV = line[0].replace("LAY14/channel000","LAY14Dig")
 
-                    if "LAY14/channel001" in line[0]:
-                        aliasLV1 = line[0].replace("LAY14/channel001","LAY1Ana")
-                        aliasLV2 = line[0].replace("LAY14/channel001","LAY4Ana")
+                    if "LAY14/cannel001" in line[0]:
+                        aliasLV = line[0].replace("LAY14/channel001","LAY14Ana")
 
-                    if "LAY23/channel000" in line[0]:
-                        aliasLV1 = line[0].replace("LAY23/channel000","LAY2Dig")
-                        aliasLV2 = line[0].replace("LAY23/channel000","LAY3Dig")
+                    if "LAY23/cannel000" in line[0]:
+                        aliasLV = line[0].replace("LAY23/channel000","LAY23Dig")
 
-                    if "LAY23/channel001" in line[0]:
-                        aliasLV1 = line[0].replace("LAY23/channel001","LAY2Ana")
-                        aliasLV2 = line[0].replace("LAY23/channel001","LAY3Ana")
+                    if "LAY23/cannel001" in line[0]:
+                        aliasLV = line[0].replace("LAY23/channel001","LAY23Ana")
 
-
-                    if aliasHV == alias:
-                        hvCurrent = float(line[1])
-
-                    if (alias in aliasLV1) or (alias in aliasLV2):
-                        if ("Dig" in aliasLV1) or ("Dig" in aliasLV2):
-                            digCurrent = float(line[1])
-                        if ("Ana" in aliasLV1) or ("Ana" in aliasLV2):
-                            anaCurrent = float(line[1])
+                    if (alias in aliasLV):
+                        if ("Dig" in aliasLV):
+                            digCurrent = float(line[1]) * 1000.0
+                            digCurrent = getRocCurrent(aliasLV, digCurrent)
+                        if ("Ana" in aliasLV):
+                            anaCurrent = float(line[1]) * 1000.0
+                            anaCurrent = getRocCurrent(aliasLV, anaCurrent)
 
 
-                if hvCurrent == -999. or digCurrent == -999. or anaCurrent == -999.:
-                    print alias, " has empty content!  HV: ", hvCurrent, "  Dig: ", digCurrent, "  Ana: ", anaCurrent
-                    fout.write(alias + "   " + str(hvCurrent) + "   " + str(digCurrent) + "   " + str(anaCurrent) + "\n")
+                if digCurrent == -999. or anaCurrent == -999.:
+                    print alias, " has empty content!  Dig: ", digCurrent, "  Ana: ", anaCurrent
 
-                else:
-                    fout.write(alias + "   " + str(hvCurrent) + "   " + str(digCurrent) + "   " + str(anaCurrent) + "\n")
+                fout.write(alias + "   " + str(digCurrent) + "   " + str(anaCurrent) + "\n")
 
 
     fin.close()

@@ -6,8 +6,12 @@ import datetime
 connection = cx_Oracle.connect('cms_trk_r/1A3C5E7G:FIN@cms_omds_adg')
 cursor = connection.cursor()
 
-start_time = "2018-07-16 00:12:00"
-stop_time = "2018-07-18 10:59:00"
+timefileName = "timestamp.txt"
+fin = open(timefileName, "r+")
+lines = fin.readlines()
+
+start_time = str(lines[0])
+stop_time = str(lines[1])
 
 options = "PixelBarrel"
 
