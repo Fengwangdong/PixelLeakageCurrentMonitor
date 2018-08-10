@@ -32,25 +32,25 @@ if(os.path.exists(inputFileName)):
 
             if ilayer in line[0]:
                 if ("BpI" in line[0]):
-                    dataBpI[i][0].append(float(line[0][17:18]))
+                    dataBpI[i][0].append(float(line[0][17:18])-0.5)
                     dataBpI[i][1].append(0.5)
                     dataBpI[i][2].append(float(line[1]))
                     dataBpI[i][3].append(float(0))
 
                 if ("BpO" in line[0]):
-                    dataBpO[i][0].append(float(line[0][17:18]))
+                    dataBpO[i][0].append(float(line[0][17:18])-0.5)
                     dataBpO[i][1].append(0.5)
                     dataBpO[i][2].append(float(line[1]))
                     dataBpO[i][3].append(float(0))
 
                 if ("BmI" in line[0]):
-                    dataBmI[i][0].append(float(line[0][17:18]))
+                    dataBmI[i][0].append(float(line[0][17:18])-0.5)
                     dataBmI[i][1].append(0.5)
                     dataBmI[i][2].append(float(line[1]))
                     dataBmI[i][3].append(float(0))
 
                 if ("BmO" in line[0]):
-                    dataBmO[i][0].append(float(line[0][17:18]))
+                    dataBmO[i][0].append(float(line[0][17:18])-0.5)
                     dataBmO[i][1].append(0.5)
                     dataBmO[i][2].append(float(line[1]))
                     dataBmO[i][3].append(float(0))
