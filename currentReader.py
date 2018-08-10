@@ -53,13 +53,13 @@ if(os.path.exists(fileName)):
                     if "LAY14/channel000" in line[0]:
                         aliasLV = line[0].replace("LAY14/channel000","LAY14Dig")
 
-                    if "LAY14/cannel001" in line[0]:
+                    if "LAY14/channel001" in line[0]:
                         aliasLV = line[0].replace("LAY14/channel001","LAY14Ana")
 
-                    if "LAY23/cannel000" in line[0]:
+                    if "LAY23/channel000" in line[0]:
                         aliasLV = line[0].replace("LAY23/channel000","LAY23Dig")
 
-                    if "LAY23/cannel001" in line[0]:
+                    if "LAY23/channel001" in line[0]:
                         aliasLV = line[0].replace("LAY23/channel001","LAY23Ana")
 
                     if (alias in aliasLV):

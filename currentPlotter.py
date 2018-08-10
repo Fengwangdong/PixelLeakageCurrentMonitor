@@ -126,9 +126,9 @@ if(os.path.exists(inputFileName)):
             label = ROOT.TLatex(0.21,0.94, klayer)
             label.SetNDC()
 
-            legend = ROOT.TLegend(0.75,0.77,0.99,0.99)
+            legend = ROOT.TLegend(0.77,0.77,0.99,0.99)
             legend.SetFillColor(0)
-            legend.SetTextSize(0.04)
+            legend.SetTextSize(0.03)
             legend.AddEntry(gr_BpI,"BPix_BpI","lpe")
             legend.AddEntry(gr_BpO,"BPix_BpO","lpe")
             legend.AddEntry(gr_BmI,"BPix_BmI","lpe")
