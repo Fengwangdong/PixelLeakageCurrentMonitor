@@ -25,10 +25,12 @@ inputFileName = "currentsFromDB.txt"
 cylinder = ["BmI","BmO","BpI","BpO"]
 rog = ["ROG1","ROG2","ROG3","ROG4"]
 disk = ["D1","D2","D3"]
+outputFileName = "leakageCurrents.txt"
 
 if(os.path.exists(inputFileName)):
     fin = open(inputFileName, "r+")
     lines = fin.readlines()
+    fout = open(outputFileName,"w")
 
     for i,idisk in enumerate(disk):
         frameHist = ROOT.TH2F("leakageCurrent","leakageCurrent",8,0,8,4,0,4)
@@ -49,6 +51,7 @@ if(os.path.exists(inputFileName)):
                     if (idisk in line[0]) and (jhc in line[0]) and (krog in line[0]):
 
                         rocCurrent = getLeakageCurrent(line[0], float(line[1]))
+                        fout.write(line[0] + "  " + str(rocCurrent) + "\n")
 
                         if "RNG1" in line[0]:
                             frameHist.SetBinContent(k*2+1,j+1,rocCurrent)
@@ -77,6 +80,7 @@ if(os.path.exists(inputFileName)):
         frameHist.GetXaxis().SetLabelSize(0.05)
 
         frameHist.GetZaxis().SetLabelSize(0.03)
+        frameHist.GetZaxis().SetRangeUser(0,6)
         frameHist.SetMarkerSize(1.5)
         frameHist.Draw("colztext")
 
@@ -85,3 +89,7 @@ if(os.path.exists(inputFileName)):
 
         label.Draw("same")
         canvas.SaveAs("FPix_Disk_" + str(i+1) + "_leakageCurrent_2D.pdf")
+
+
+    fin.close()
+    fout.close()
