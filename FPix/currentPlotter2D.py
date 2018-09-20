@@ -80,7 +80,7 @@ if(os.path.exists(inputFileName)):
         frameHist.GetXaxis().SetLabelSize(0.05)
 
         frameHist.GetZaxis().SetLabelSize(0.03)
-        frameHist.GetZaxis().SetRangeUser(0,6)
+        frameHist.GetZaxis().SetRangeUser(0,9)
         frameHist.SetMarkerSize(1.5)
         frameHist.Draw("colztext")
 
