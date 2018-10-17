@@ -87,7 +87,8 @@ if(os.path.exists(inputFileName1) and os.path.exists(inputFileName2)):
             if minValue > min([x for x in dataMinus[k][1] if x!=0]):
                 minValue = min([x for x in dataMinus[k][1] if x!=0])
 
-            frameHist.GetYaxis().SetRangeUser(0.9,1.2)
+            frameHist.GetYaxis().SetRangeUser(1,1.6)
+            #frameHist.GetYaxis().SetRangeUser(0.9,1.2)
             frameHist.GetYaxis().SetTitle("I_{leak}(before) / I_{leak}(after)")
             frameHist.GetYaxis().SetTitleOffset(1.6)
             frameHist.GetYaxis().SetTitleSize(0.06)
