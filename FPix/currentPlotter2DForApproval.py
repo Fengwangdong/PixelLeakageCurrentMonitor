@@ -39,7 +39,7 @@ if(os.path.exists(inputFileName)):
             frameHist.GetXaxis().SetBinLabel(ibinX*2+2, str(ibinX+1)+"(RING2)")
 
         for ibinY in xrange(4):
-            frameHist.GetYaxis().SetBinLabel(ibinY+1, cylinder[ibinY])
+            frameHist.GetYaxis().SetBinLabel(ibinY+1, str(ibinY+1))
 
         for j,jhc in enumerate(cylinder):
 
@@ -64,13 +64,13 @@ if(os.path.exists(inputFileName)):
 
         canvas = ROOT.TCanvas("leakageCurrent","leakageCurrent",1300,1000)
         canvas.SetTopMargin(0.07)
-        canvas.SetLeftMargin(0.1)
+        canvas.SetLeftMargin(0.08)
         canvas.SetRightMargin(0.14)
         canvas.SetBottomMargin(0.14)
         canvas.cd()
 
         frameHist.GetYaxis().SetTitle("Cylinder")
-        frameHist.GetYaxis().SetTitleOffset(0.9)
+        frameHist.GetYaxis().SetTitleOffset(0.7)
         frameHist.GetYaxis().SetTitleSize(0.05)
         frameHist.GetYaxis().SetLabelSize(0.05)
 
@@ -87,10 +87,10 @@ if(os.path.exists(inputFileName)):
         frameHist.SetMarkerSize(1.5)
         frameHist.Draw("colztext")
 
-        label = ROOT.TLatex(0.17,0.95, "CMS  2018")
+        label = ROOT.TLatex(0.14,0.95, "CMS  2018")
         label.SetNDC()
 
-        label2 = ROOT.TLatex(0.37,0.95, "Preliminary")
+        label2 = ROOT.TLatex(0.32,0.95, "Preliminary")
         label2.SetTextFont(52)
         label2.SetNDC()
 
