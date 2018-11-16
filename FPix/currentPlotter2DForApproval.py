@@ -69,7 +69,7 @@ if(os.path.exists(inputFileName)):
         canvas.SetBottomMargin(0.14)
         canvas.cd()
 
-        frameHist.GetYaxis().SetTitle("Cylinder")
+        frameHist.GetYaxis().SetTitle("Half Cylinder")
         frameHist.GetYaxis().SetTitleOffset(0.7)
         frameHist.GetYaxis().SetTitleSize(0.05)
         frameHist.GetYaxis().SetLabelSize(0.05)
