@@ -23,6 +23,7 @@ ROOT.gStyle.SetPalette(87)
 
 inputFileName = "currentsFromDB.txt"
 cylinder = ["BmI","BmO","BpI","BpO"]
+auxCylinder = ["-Inner","-Outer","+Inner","+Outer"]
 rog = ["ROG1","ROG2","ROG3","ROG4"]
 disk = ["D1","D2","D3"]
 outputFileName = "leakageCurrents.txt"
@@ -39,7 +40,7 @@ if(os.path.exists(inputFileName)):
             frameHist.GetXaxis().SetBinLabel(ibinX*2+2, str(ibinX+1)+"(RING2)")
 
         for ibinY in xrange(4):
-            frameHist.GetYaxis().SetBinLabel(ibinY+1, str(ibinY+1))
+            frameHist.GetYaxis().SetBinLabel(ibinY+1, auxCylinder[ibinY])
 
         for j,jhc in enumerate(cylinder):
 
@@ -64,13 +65,13 @@ if(os.path.exists(inputFileName)):
 
         canvas = ROOT.TCanvas("leakageCurrent","leakageCurrent",1300,1000)
         canvas.SetTopMargin(0.07)
-        canvas.SetLeftMargin(0.08)
+        canvas.SetLeftMargin(0.13)
         canvas.SetRightMargin(0.14)
         canvas.SetBottomMargin(0.14)
         canvas.cd()
 
         frameHist.GetYaxis().SetTitle("Half Cylinder")
-        frameHist.GetYaxis().SetTitleOffset(0.7)
+        frameHist.GetYaxis().SetTitleOffset(1.3)
         frameHist.GetYaxis().SetTitleSize(0.05)
         frameHist.GetYaxis().SetLabelSize(0.05)
 
@@ -80,22 +81,27 @@ if(os.path.exists(inputFileName)):
         frameHist.GetXaxis().SetLabelSize(0.04)
 
         frameHist.GetZaxis().SetLabelSize(0.03)
-        frameHist.GetZaxis().SetTitle("I_{leak}/ROC [uA] (Disk " + str(i+1) + ")")
+        frameHist.GetZaxis().SetTitle("I_{leak}/ROC [#muA] (Disk " + str(i+1) + ")")
         frameHist.GetZaxis().SetTitleOffset(0.75)
         frameHist.GetZaxis().SetTitleSize(0.05)
         frameHist.GetZaxis().SetRangeUser(0,11)
         frameHist.SetMarkerSize(1.5)
         frameHist.Draw("colztext")
 
-        label = ROOT.TLatex(0.14,0.95, "CMS  2018")
+        label = ROOT.TLatex(0.14,0.95, "CMS")
         label.SetNDC()
 
         label2 = ROOT.TLatex(0.32,0.95, "Preliminary")
         label2.SetTextFont(52)
         label2.SetNDC()
 
+        label3 = ROOT.TLatex(0.23,0.95, "2018")
+        label3.SetTextFont(42)
+        label3.SetNDC()
+
         label.Draw("same")
         label2.Draw("same")
+        label3.Draw("same")
         canvas.SaveAs("FPix_Disk_" + str(i+1) + "_leakageCurrent_2D.pdf")
 
 
