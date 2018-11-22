@@ -23,7 +23,7 @@ ROOT.gStyle.SetPalette(87)
 
 inputFileName = "currentsFromDB.txt"
 cylinder = ["BmI","BmO","BpI","BpO"]
-auxCylinder = ["-Inner","-Outer","+Inner","+Outer"]
+auxCylinder = ["-z Inner","-z Outer","+z Inner","+z Outer"]
 rog = ["ROG1","ROG2","ROG3","ROG4"]
 disk = ["D1","D2","D3"]
 outputFileName = "leakageCurrents.txt"
@@ -65,13 +65,13 @@ if(os.path.exists(inputFileName)):
 
         canvas = ROOT.TCanvas("leakageCurrent","leakageCurrent",1300,1000)
         canvas.SetTopMargin(0.07)
-        canvas.SetLeftMargin(0.13)
+        canvas.SetLeftMargin(0.16)
         canvas.SetRightMargin(0.14)
         canvas.SetBottomMargin(0.14)
         canvas.cd()
 
         frameHist.GetYaxis().SetTitle("Half Cylinder")
-        frameHist.GetYaxis().SetTitleOffset(1.3)
+        frameHist.GetYaxis().SetTitleOffset(1.6)
         frameHist.GetYaxis().SetTitleSize(0.05)
         frameHist.GetYaxis().SetLabelSize(0.05)
 
